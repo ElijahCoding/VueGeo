@@ -22,6 +22,7 @@
 </template>
 
 <script>
+    import firebase from 'firebase'
     export default {
         name: 'Login',
 
@@ -35,7 +36,18 @@
 
         methods: {
             login () {
+                if (this.email && this.password) {
+                    firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                            .then(user => {
+                                this.$router.push({ name: 'GMap' })
+                            }).catch(err => {
+                                this.feedback = err.message
+                            })
 
+                    this.feedback = null
+                } else {
+                    this.feedback = 'Please fill in both fields'
+                }
             }
         }
     }
