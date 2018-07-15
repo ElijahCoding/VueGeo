@@ -31,7 +31,7 @@
                 })
 
                 db.collection('users').get().then(users => {
-                    users.doc.forEach(doc => {
+                    users.docs.forEach(doc => {
                         let data = doc.data()
                         if (data.geolocation) {
                             let marker = new google.maps.Marker({
@@ -42,6 +42,9 @@
                                 map
                             })
                             // add click event to marker
+                            marker.addListener('click', () => {
+                                this.$router.push({ name: 'ViewProfile', params: { id: doc.id } })
+                            })
                         }
                     })
                 })
