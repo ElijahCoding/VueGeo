@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import GMap from '@/components/home/GMap'
-import Singup from '@/components/auth/Signup'
+import Signup from '@/components/auth/Signup'
 
 Vue.use(Router)
 
@@ -15,8 +15,8 @@ export default new Router({
 
   {
     path: '/signup',
-    name: 'Singup',
-    component: Singup
+    name: 'Signup',
+    component: Signup
   }
  ]
 })
